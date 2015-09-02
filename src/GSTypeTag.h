@@ -11,9 +11,9 @@ public:
 
 protected:
 	std::string typeName;
-	void (*mark)(GSObject *x);
-	void (*free)(GSObject *x);
-	int (*compare)(GSObject *x);
+	void (*mark)(GSObject *x, GSMemoryManager *mm);
+	void (*free)(GSObject *x, GSMemoryManager *mm);
+	int (*compare)(GSObject *lhs, GSObject *rhs);
 	unsigned (*hash)(GSObject *x);
 	std::string (*toString)(GSObject *x);
 };
