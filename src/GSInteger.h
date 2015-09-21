@@ -3,12 +3,17 @@
 
 #include <GSObject.h>
 
+extern GSTypeTag integerTypeTag;
+
+void intitIntegerTypeTag();
+
 class GSInteger : public GSObject
 {
 public:
 	GSInteger();
+	GSInteger(int x);
 	~GSInteger();
-public:
+
 	int data;
 };
 

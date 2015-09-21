@@ -1,9 +1,9 @@
 
-#include <GSchemeObject.h>
+#include <GSObject.h>
 
 GSObject::GSObject()
 {
-	tag = 0;
+	typeTag = 0;
 	flags = 0;
 	next = 0;
 }

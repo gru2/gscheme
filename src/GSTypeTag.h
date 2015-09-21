@@ -3,13 +3,15 @@
 
 #include <string>
 
+class GSObject;
+class GSMemoryManager;
+
 class GSTypeTag
 {
 public:
 	GSTypeTag();
 	~GSTypeTag();
 
-protected:
 	std::string typeName;
 	void (*mark)(GSObject *x, GSMemoryManager *mm);
 	void (*free)(GSObject *x, GSMemoryManager *mm);

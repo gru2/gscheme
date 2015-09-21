@@ -1,5 +1,7 @@
 #include <GSInteger.h>
 #include <GSTypeTag.h>
+#include <assert.h>
+#include <stdio.h>
 
 int integerCompare(GSObject *lhs, GSObject *rhs)
 {
@@ -7,9 +9,9 @@ int integerCompare(GSObject *lhs, GSObject *rhs)
 	assert(rhs->typeTag == &integerTypeTag);
 	GSInteger *l = (GSInteger *)lhs;
 	GSInteger *r = (GSInteger *)rhs;
-	if (l->data < r.data)
+	if (l->data < r->data)
 		return -1;
-	if (l->data > r.data)
+	if (l->data > r->data)
 		return 1;
 	return 0;
 }
@@ -36,16 +38,24 @@ void intitIntegerTypeTag()
 {
 	GSTypeTag &t = integerTypeTag;
 	t.typeName = "Integer";
-	t.mark = objectMark;
-	t.free = objectFree;
+	//t.mark = objectMark;
+	//t.free = objectFree;
 	t.compare = integerCompare;
 	t.hash = integerHash;
 	t.toString = integerToString;
 }
 
-GSInteger::GSInteger() : GSObject()
+GSInteger::GSInteger() : GSObject(), data(0)
 {
-	data = 0;
+	typeTag = &integerTypeTag;
 }
 
+GSInteger::GSInteger(int x) : GSObject(), data(x)
+{
+	typeTag = &integerTypeTag;
+}
+
+GSInteger::~GSInteger()
+{
+}
 
