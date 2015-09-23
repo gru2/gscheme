@@ -59,3 +59,10 @@ GSInteger::~GSInteger()
 {
 }
 
+int getInteger(GSObject *x)
+{
+	assert(x->typeTag == &integerTypeTag);
+	GSInteger *y = (GSInteger *)x;
+	return y->data;
+}
+

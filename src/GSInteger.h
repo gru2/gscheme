@@ -17,5 +17,7 @@ public:
 	int data;
 };
 
+int getInteger(GSObject *x);
+
 #endif
 
