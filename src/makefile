@@ -5,7 +5,8 @@ CPPFLAGS = $(OPT_FLAGS) -I.
 
 TARGETS = GSObjectTest
 
-GS_OBJECT_TEST_O = GSTypeTag.o GSObject.o GSInteger.o GSObjectTest.o
+GS_OBJECT_TEST_O = GSTypeTag.o GSObject.o GSInteger.o \
+GSBool.o GSObjectTest.o
 
 all: $(TARGETS)
 

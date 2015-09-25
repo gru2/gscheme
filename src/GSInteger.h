@@ -5,7 +5,7 @@
 
 extern GSTypeTag integerTypeTag;
 
-void intitIntegerTypeTag();
+void initIntegerTypeTag();
 
 class GSInteger : public GSObject
 {
@@ -17,7 +17,7 @@ public:
 	int data;
 };
 
-int getInteger(GSObject *x);
+int asInteger(GSObject *x);
 
 #endif
 

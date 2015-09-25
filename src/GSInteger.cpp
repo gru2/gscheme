@@ -34,7 +34,7 @@ std::string integerToString(GSObject *x)
 
 GSTypeTag integerTypeTag;
 
-void intitIntegerTypeTag()
+void initIntegerTypeTag()
 {
 	GSTypeTag &t = integerTypeTag;
 	t.typeName = "Integer";
@@ -59,7 +59,7 @@ GSInteger::~GSInteger()
 {
 }
 
-int getInteger(GSObject *x)
+int asInteger(GSObject *x)
 {
 	assert(x->typeTag == &integerTypeTag);
 	GSInteger *y = (GSInteger *)x;
