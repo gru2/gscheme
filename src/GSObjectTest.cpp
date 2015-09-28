@@ -1,6 +1,7 @@
 #include <GSObject.h>
 #include <GSInteger.h>
 #include <GSBool.h>
+#include <GSCons.h>
 #include <GSTypeTag.h>
 #include <stdio.h>
 #include <iostream>
@@ -16,6 +17,7 @@ void testGSObject()
 {
 	initIntegerTypeTag();
 	initBoolTypeTag();
+	initConsTypeTag();
 
 	const int ivr = 10;
 	GSInteger i1(ivr);
@@ -30,6 +32,12 @@ void testGSObject()
 	std::cout << "b1 = " << b1s << std::endl;
 	bool bv = asBool(&b1);
 	if (bv != bvr)
+		fail();
+
+	GSCons cons1(&i1, &b1);
+	std::string cons1s = cons1.typeTag->toString(&cons1);
+	std::cout << "cons1 = " << cons1s << std::endl;
+	if (cons1s != "(10.true)")
 		fail();
 }
 
