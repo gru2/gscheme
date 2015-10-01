@@ -20,5 +20,6 @@ public:
 
 GSObject *car(GSObject *x);
 GSObject *cdr(GSObject *x);
+GSObject *cons(GSObject *_car, GSObject *_cdr);
 
 #endif

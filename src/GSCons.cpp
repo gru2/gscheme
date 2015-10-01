@@ -65,8 +65,23 @@ GSCons::~GSCons()
 
 GSObject *car(GSObject *x)
 {
+	assert(x->typeTag == &consTypeTag);
+	GSCons *y = (GSCons *)x;
+	return y->car_;
 }
 
 GSObject *cdr(GSObject *x)
 {
+`
+	assert(x->typeTag == &consTypeTag);
+	GSCons *y = (GSCons *)x;
+	return y->cdr_;
 }
+
+GSObject *cons(GSObject *_car, GSObject *_cdr)
+{
+	GSMemeoryManager *memoryManager = _car->typeTag->memoryManager;
+	GSCons *newCons = (GSCons *)memoryManager->allocObject(sizeof(GSCons));
+	
+}
+

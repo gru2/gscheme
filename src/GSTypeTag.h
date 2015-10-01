@@ -18,6 +18,7 @@ public:
 	int (*compare)(GSObject *lhs, GSObject *rhs);
 	unsigned (*hash)(GSObject *x);
 	std::string (*toString)(GSObject *x);
+	GSMemoryManager *memoryManager;
 };
 
 #endif
