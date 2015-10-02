@@ -8,8 +8,8 @@ public:
 	~GSMemoryManager();
 
 	void collectGarbage();
+	void *allocateObject(int size);
 protected:
-	
 };
 
 #endif
