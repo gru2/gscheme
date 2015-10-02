@@ -1,6 +1,7 @@
 
 #include <GSCons.h>
 #include <GSTypeTag.h>
+#include <GSMemoryManager.h>
 #include <assert.h>
 #include <stdio.h>
 
@@ -72,7 +73,6 @@ GSObject *car(GSObject *x)
 
 GSObject *cdr(GSObject *x)
 {
-`
 	assert(x->typeTag == &consTypeTag);
 	GSCons *y = (GSCons *)x;
 	return y->cdr_;
@@ -80,8 +80,11 @@ GSObject *cdr(GSObject *x)
 
 GSObject *cons(GSObject *_car, GSObject *_cdr)
 {
-	GSMemeoryManager *memoryManager = _car->typeTag->memoryManager;
-	GSCons *newCons = (GSCons *)memoryManager->allocObject(sizeof(GSCons));
+	GSMemoryManager *memoryManager = _car->typeTag->memoryManager;
+	GSCons *newCons =
+		(GSCons *)memoryManager->allocateObject(sizeof(GSCons));
+	new (newCons) GSCons(_car, _cdr);
+	return newCons;
 	
 }
 
