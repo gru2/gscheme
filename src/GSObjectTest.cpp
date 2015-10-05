@@ -39,6 +39,10 @@ void testGSObject()
 	std::cout << "cons1 = " << cons1s << std::endl;
 	if (cons1s != "(10.true)")
 		fail();
+
+	GSCons *cons2 = (GSCons *)cons(&b1, &i1);
+	std::cout << "cons2 = " << cons2->typeTag->toString(cons2)
+		<< std::endl;
 }
 
 int main(int argc, char *argv[])
