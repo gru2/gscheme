@@ -3,6 +3,7 @@
 #include <GSBool.h>
 #include <GSCons.h>
 #include <GSTypeTag.h>
+#include <GSMemoryManager.h>
 #include <stdio.h>
 #include <iostream>
 #include <stdlib.h>
@@ -15,6 +16,7 @@ void fail()
 
 void testGSObject()
 {
+	GSMemoryManager memoryManager;
 	initIntegerTypeTag();
 	initBoolTypeTag();
 	initConsTypeTag();
@@ -43,6 +45,11 @@ void testGSObject()
 	GSCons *cons2 = (GSCons *)cons(&b1, &i1);
 	std::cout << "cons2 = " << cons2->typeTag->toString(cons2)
 		<< std::endl;
+	int ivr2 = 127;
+	GSObject *iv2 = createInteger(ivr2,&memoryManager);
+	int ivt2 = asInteger(iv2);
+	if (ivr2 != ivt2)
+		fail();
 }
 
 int main(int argc, char *argv[])

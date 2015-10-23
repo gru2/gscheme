@@ -3,6 +3,8 @@
 
 #include <GSObject.h>
 
+class GSMemoryManager;
+
 extern GSTypeTag integerTypeTag;
 
 void initIntegerTypeTag();
@@ -18,6 +20,7 @@ public:
 };
 
 int asInteger(GSObject *x);
+GSObject *createInteger(int x, GSMemoryManager *mm);
 
 #endif
 

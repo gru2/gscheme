@@ -1,5 +1,6 @@
 #include <GSInteger.h>
 #include <GSTypeTag.h>
+#include <GSMemoryManager.h>
 #include <assert.h>
 #include <stdio.h>
 
@@ -64,5 +65,13 @@ int asInteger(GSObject *x)
 	assert(x->typeTag == &integerTypeTag);
 	GSInteger *y = (GSInteger *)x;
 	return y->data;
+}
+
+GSObject *createInteger(int x, GSMemoryManager *mm)
+{
+	GSInteger *r = (GSInteger *)mm->allocateObject(sizeof(GSInteger),
+		&integerTypeTag);
+	r->data = x;
+	return r;
 }
 
