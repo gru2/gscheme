@@ -82,7 +82,8 @@ GSObject *cons(GSObject *_car, GSObject *_cdr)
 {
 	GSMemoryManager *memoryManager = _car->typeTag->memoryManager;
 	GSCons *newCons =
-		(GSCons *)memoryManager->allocateObject(sizeof(GSCons));
+		(GSCons *)memoryManager->allocateObject(sizeof(GSCons),
+		&consTypeTag);
 	new (newCons) GSCons(_car, _cdr);
 	return newCons;
 	

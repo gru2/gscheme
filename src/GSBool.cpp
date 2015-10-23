@@ -1,5 +1,6 @@
 #include <GSBool.h>
 #include <GSTypeTag.h>
+#include <GSMemoryManager.h>
 #include <assert.h>
 #include <stdio.h>
 
@@ -68,5 +69,12 @@ bool asBool(GSObject *x)
 	assert(x->typeTag == &boolTypeTag);
 	GSBool *y = (GSBool *)x;
 	return y->data;
+}
+
+GSObject *createBool(bool x, GSMemoryManager *mm)
+{
+	GSBool *r = (GSBool *)mm->allocateObject(sizeof(GSBool), &boolTypeTag);
+	r->data = x;
+	return r;
 }
 

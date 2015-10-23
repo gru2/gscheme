@@ -3,6 +3,8 @@
 
 #include <GSObject.h>
 
+class GSMemoryManager;
+
 extern GSTypeTag boolTypeTag;
 
 void initBoolTypeTag();
@@ -18,6 +20,7 @@ public:
 };
 
 bool asBool(GSObject *x);
+GSObject *createBool(bool x, GSMemoryManager *mm);
 
 #endif
 

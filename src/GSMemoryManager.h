@@ -2,6 +2,7 @@
 #define __GS_MEMORY_MANAGER_H
 
 class GSObject;
+class GSTypeTag;
 
 class GSMemoryManager
 {
@@ -10,7 +11,7 @@ public:
 	~GSMemoryManager();
 
 	void collectGarbage();
-	void *allocateObject(int size);
+	GSObject *allocateObject(int size, GSTypeTag *tt);
 protected:
 	GSObject *allocatedObjects;
 	GSObject *liveObjects;

@@ -1,5 +1,7 @@
 #include <GSMemoryManager.h>
+#include <GSObject.h>
 #include <stdlib.h>
+#include <assert.h>
 
 GSMemoryManager::GSMemoryManager()
 {
@@ -9,9 +11,12 @@ GSMemoryManager::~GSMemoryManager()
 {
 }
 
-void *GSMemoryManager::allocateObject(int size)
+GSObject *GSMemoryManager::allocateObject(int size, GSTypeTag *tt)
 {
-	return malloc(size);
+	assert(size >= sizeof(GSObject));
+	GSObject *r = (GSObject *)malloc(size);
+	r->typeTag = tt;
+	return r;
 }
 
 void GSMemoryManager::collectGarbage()
