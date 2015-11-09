@@ -26,6 +26,8 @@ public:
 	void setInputStream(InputStream *x) { inputStream = x; }
 protected:
 	void eatWhiteSpaceAndComments();
+	bool eatWhiteSpace();
+	bool eatComments();
 
 	SourceCodePosition *sourceCodePosition;
 	ErrorReporter *errorReporter;
