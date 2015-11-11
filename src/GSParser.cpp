@@ -12,8 +12,11 @@ GSParser::~GSParser()
 {
 }
 
-TokenType GSParser::lex()
+int GSParser::lex()
 {
+	eatWhiteSpaceAndComments();
+	if (tryParseNumber())
+		return 
 }
 
 void GSParser::eatWhiteSpaceAndComments()

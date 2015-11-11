@@ -14,7 +14,7 @@ public:
 	enum TokenType { TT_IDENTIFIER = 256, TT_INTEGER, TT_BOOL, TT_STRING,
 		TT_EOF };
 
-	TokenType lex();
+	int lex();
 
 	SourceCodePosition *getSourceCodePosition() const
 		{ return sourceCodePosition; }
