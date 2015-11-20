@@ -11,7 +11,7 @@ public:
 	GSParser();
 	~GSParser();
 
-	enum TokenType { TT_IDENTIFIER = 256, TT_INTEGER, TT_BOOL, TT_STRING,
+	enum TokenType { TT_IDENTIFIER = 256, TT_INTEGER, TT_TRUE, TT_FALSE, TT_STRING,
 		TT_EOF };
 
 	int lex();
@@ -28,6 +28,9 @@ protected:
 	void eatWhiteSpaceAndComments();
 	bool eatWhiteSpace();
 	bool eatComments();
+	bool tryParseInteger();
+	bool tryParseString();
+	bool tryParseBool(int &token);
 
 	SourceCodePosition *sourceCodePosition;
 	ErrorReporter *errorReporter;

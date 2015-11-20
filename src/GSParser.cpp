@@ -17,6 +17,9 @@ int GSParser::lex()
 	eatWhiteSpaceAndComments();
 	if (tryParseNumber())
 		return 
+	char c = inputStream->lookAhead(0);
+	if (c == '(' || c == ')')
+		return c
 }
 
 void GSParser::eatWhiteSpaceAndComments()
@@ -94,3 +97,14 @@ void GSParser::eatComments()
 	}
 }
 
+bool GSParser::tryParseInteger()
+{
+}
+
+bool GSParser::tryParseString()
+{
+}
+
+bool GSParser::tryParseBool(int &token)
+{
+}
