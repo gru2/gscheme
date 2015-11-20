@@ -1,0 +1,20 @@
+07.11.2015
+----------
+
+Scheme Comments
+
+     ;;; This is a comment about the FACT procedure.  Scheme
+     ;;; ignores all of this comment.  The FACT procedure computes
+     ;;; the factorial of a non-negative integer.
+     
+     #|
+     This is an extended comment.
+     Such comments are useful for commenting out code fragments.
+     |#
+     
+     (define fact
+       (lambda (n)
+         (if (= n 0)                      ;This is another comment:
+             1                            ;Base case: return 1
+             (* n (fact (- n 1))))))
+
