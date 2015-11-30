@@ -15,7 +15,7 @@ GSParser::~GSParser()
 int GSParser::lex()
 {
 	eatWhiteSpaceAndComments();
-	if (tryParseNumber())
+	if (tryParseInteger())
 		return 
 	char c = inputStream->lookAhead(0);
 	if (c == '(' || c == ')')
@@ -99,6 +99,34 @@ void GSParser::eatComments()
 
 bool GSParser::tryParseInteger()
 {
+	int position = inputStream->getPosition();
+	char c = inputStream->lookAhead(0);
+	int sign = 1;
+	if (c == '+')
+		inputStream->getChar();
+	if (c == '-')
+	{
+		inputStream->getChar();
+		sign = -1;
+	}
+	if (tryParseUnsignedInteger())
+	{
+		integerValue *= sign;
+		return true;
+	}
+	inputStream->setPosition(position);
+	return false;
+}
+
+bool GSParser::tryParseUnsignedInteger()
+{
+	char c = inputStream->lookAhead(0);
+	if (c < '0' || c > '9')
+		return false;
+	for (;;)
+	{
+		
+	}
 }
 
 bool GSParser::tryParseString()

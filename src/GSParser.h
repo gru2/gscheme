@@ -29,6 +29,7 @@ protected:
 	bool eatWhiteSpace();
 	bool eatComments();
 	bool tryParseInteger();
+	bool tryParseUnsignedInteger();
 	bool tryParseString();
 	bool tryParseBool(int &token);
 
