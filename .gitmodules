@@ -1,0 +1,3 @@
+[submodule "ext/gmisc"]
+	path = ext/gmisc
+	url = https://github.com/gru2/gmisc
