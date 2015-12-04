@@ -1,6 +1,8 @@
 #ifndef __GSPARSER_H
 #define __GSPARSER_H
 
+#include <string>
+
 class SourceCodePosition;
 class ErrorReporter;
 class InputStream;
@@ -32,10 +34,13 @@ protected:
 	bool tryParseUnsignedInteger();
 	bool tryParseString();
 	bool tryParseBool(int &token);
+	void error(const std::string &msg);
 
 	SourceCodePosition *sourceCodePosition;
 	ErrorReporter *errorReporter;
 	InputStream *inputStream;
+	int integerValue;
+	std::string stringValue;
 };
 
 #endif

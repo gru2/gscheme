@@ -1,7 +1,7 @@
 
 OPT_FLAGS = -g
 
-CPPFLAGS = $(OPT_FLAGS) -I.
+CPPFLAGS = $(OPT_FLAGS) -I. -I../ext/gmisc
 
 TARGETS = GSObjectTest
 

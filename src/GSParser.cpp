@@ -1,5 +1,6 @@
 
 #include <GSParser.h>
+#include <InputStream.h>
 
 GSParser::GSParser()
 {
@@ -16,10 +17,10 @@ int GSParser::lex()
 {
 	eatWhiteSpaceAndComments();
 	if (tryParseInteger())
-		return 
+		return TT_INTEGER;
 	char c = inputStream->lookAhead(0);
 	if (c == '(' || c == ')')
-		return c
+		return c;
 }
 
 void GSParser::eatWhiteSpaceAndComments()
@@ -30,10 +31,10 @@ void GSParser::eatWhiteSpaceAndComments()
 		r1 = eatWhiteSpace();
 		r2 = eatComments();
 	}
-	while(r1 || r2)
+	while(r1 || r2);
 }
 
-void GSParser::eatWhiteSpace()
+bool GSParser::eatWhiteSpace()
 {
 	bool r = false;
 	for (;;)
@@ -49,21 +50,21 @@ void GSParser::eatWhiteSpace()
 	}
 }
 
-void GSParser::eatComments()
+bool GSParser::eatComments()
 {
 	bool r = false;
 	for (;;)
 	{
 		char c0 = inputStream->lookAhead(0);
-		char c1 = inputStream->loadAhead(1);
+		char c1 = inputStream->lookAhead(1);
 		if (c0 == ';')
 		{
 			r = true;
-			inputSteam->getChar();
+			inputStream->getChar();
 			for (;;)
 			{
 				char c = inputStream->getChar();
-				if (C == '\n' || c == '\r')
+				if (c == '\n' || c == '\r')
 					break;
 				if (inputStream->isEof())
 					break;
@@ -79,12 +80,12 @@ void GSParser::eatComments()
 			{
 				if (inputStream->isEof())
 				{
-					error("unfinished comment")
+					error("unfinished comment");
 					break;
 				}
 				c0 = inputStream->lookAhead(0);
 				c1 = inputStream->lookAhead(1);
-				if (c0 == '|' && c2 == '#')
+				if (c0 == '|' && c1 == '#')
 				{
 					inputStream->getChar();
 					inputStream->getChar();
@@ -136,3 +137,9 @@ bool GSParser::tryParseString()
 bool GSParser::tryParseBool(int &token)
 {
 }
+
+void error(const std::string &msg)
+{
+}
+
+
