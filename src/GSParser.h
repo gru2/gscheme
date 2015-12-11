@@ -41,6 +41,7 @@ protected:
 	InputStream *inputStream;
 	int integerValue;
 	std::string stringValue;
+	std::string buffer;
 };
 
 #endif

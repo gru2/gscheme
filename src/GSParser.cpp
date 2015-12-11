@@ -1,6 +1,7 @@
 
 #include <GSParser.h>
 #include <InputStream.h>
+#include <stdlib.h>
 
 GSParser::GSParser()
 {
@@ -124,21 +125,33 @@ bool GSParser::tryParseUnsignedInteger()
 	char c = inputStream->lookAhead(0);
 	if (c < '0' || c > '9')
 		return false;
+	buffer.clear();
 	for (;;)
 	{
-		
+		c = inputStream->lookAhead(0);
+		if (c < '0' || c > '9')
+			break;
+		c = inputStream->getChar();
+		buffer.push_back(c);
 	}
+	integerValue = atoi(buffer.c_str());
+	return true;
 }
 
 bool GSParser::tryParseString()
 {
+	char c = inputStream->lookAhead(0);
+	if (c != '\"')
+		return false;
+	inputStream->getChar();
+	stringValue.clear();
 }
 
 bool GSParser::tryParseBool(int &token)
 {
 }
 
-void error(const std::string &msg)
+void GSParser::error(const std::string &msg)
 {
 }
 

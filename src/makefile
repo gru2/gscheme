@@ -6,7 +6,12 @@ CPPFLAGS = $(OPT_FLAGS) -I. -I../ext/gmisc
 TARGETS = GSObjectTest
 
 GS_OBJECT_TEST_O = GSTypeTag.o GSObject.o GSInteger.o GSBool.o GSCons.o \
-	GSObjectTest.o GSMemoryManager.o GSParser.o
+	GSObjectTest.o GSMemoryManager.o GSParser.o \
+	../ext/gmisc/InputStream.o ../ext/gmisc/ErrorReporter.o \
+	../ext/gmisc/SourceCodePosition.o
+
+GS_PARSER_TEST_O = 
+
 
 all: $(TARGETS)
 
