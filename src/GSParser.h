@@ -39,6 +39,7 @@ protected:
 	SourceCodePosition *sourceCodePosition;
 	ErrorReporter *errorReporter;
 	InputStream *inputStream;
+
 	int integerValue;
 	std::string stringValue;
 	std::string buffer;
